@@ -24,19 +24,18 @@ namespace APIOpenWeather
         {
             var homePage = new MainPage(_restService, _apiService, _validator);
             var profilePage = new ProfilePage(_apiService, _validator);
-            var aboutPage = new AboutPage(_apiService, _validator);
+            var aboutPage = new AboutPage(_apiService, _validator, _restService);
+            var faqPage = new FaqPage();
 
-
-            Items.Add(new FlyoutItem
-                {
-                Title = "Main Menu",
-                Icon = "menu.png",
+            Items.Add(new TabBar
+            {
                 Items =
-                {
-                new ShellContent { Title = "Home", Icon = "home.png", Content = homePage },
-                new ShellContent { Title = "Profile", Icon = "profile.png", Content = profilePage },
-                new ShellContent { Title = "About Me", Icon = "about.png", Content = aboutPage },
-                }
+        {
+            new ShellContent { Title = "Home", Icon = "home.png", Content = homePage },
+            new ShellContent { Title = "Profile", Icon = "profile.png", Content = profilePage },
+            new ShellContent { Title = "About Me", Icon = "about.png", Content = aboutPage },
+            new ShellContent { Title = "FAQ", Icon = "faq.png", Content = faqPage }
+        }
             });
         }
     }

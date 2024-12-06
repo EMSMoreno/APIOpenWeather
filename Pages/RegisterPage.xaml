@@ -9,12 +9,12 @@
           Margin="20,150,20,40">      
 
         <Image Grid.Row="0"
-               Source="accounts.png"
+               Source="register.png"
                Aspect="AspectFit"
                HeightRequest="100"
                WidthRequest="100" />
         <Label Grid.Row="1"
-               Text="Hello! Join Us!"
+               Text="Welcome to OpenWeatherAPI! Join Us!"
                FontAttributes="Bold"
                HorizontalOptions="Center" />
 

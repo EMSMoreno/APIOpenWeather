@@ -65,7 +65,7 @@ namespace APIOpenWeather.Services
             }
         }
 
-
+        //Alterar Login
         public async Task<ApiResponse<bool>> Login(string email, string password)
         {
             try
@@ -79,25 +79,38 @@ namespace APIOpenWeather.Services
                 var json = JsonSerializer.Serialize(login, _serializerOptions);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+                // Log the request payload
+                _logger.LogInformation($"Sending login request: {json}");
+
                 var response = await PostRequest("api/Users/Login", content);
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    _logger.LogError($"Error sending HTTP request: {response.StatusCode}");
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    _logger.LogError($"Error sending HTTP request: {response.StatusCode} - {errorContent}");
+
                     return new ApiResponse<bool>
                     {
-                        ErrorMessage = $"Error sending HTTP request: {response.StatusCode}"
+                        ErrorMessage = $"Error sending HTTP request: {response.StatusCode} - {errorContent}"
                     };
                 }
 
                 var jsonResult = await response.Content.ReadAsStringAsync();
                 var result = JsonSerializer.Deserialize<Token>(jsonResult, _serializerOptions);
 
-                Preferences.Set("accesstoken", result!.AccessToken);
-                Preferences.Set("userid", (int)result.UserId!);
-                Preferences.Set("username", result.UserName);
+                if (result != null)
+                {
+                    // Store the token and user information in Preferences
+                    Preferences.Set("accesstoken", result.AccessToken);
+                    Preferences.Set("userid", result.UserId);
+                    Preferences.Set("username", result.UserName);
 
-                return new ApiResponse<bool> { Data = true };
+                    return new ApiResponse<bool> { Data = true };
+                }
+                else
+                {
+                    return new ApiResponse<bool> { ErrorMessage = "Failed to deserialize the response" };
+                }
             }
             catch (Exception ex)
             {
@@ -110,13 +123,18 @@ namespace APIOpenWeather.Services
         {
             try
             {
-                // Usar o URI relativo, pois o BaseAddress já foi definido no MauiProgram.cs
                 var result = await _httpClient.PostAsync(uri, content);
+
+                if (!result.IsSuccessStatusCode)
+                {
+                    var errorContent = await result.Content.ReadAsStringAsync();
+                    _logger.LogError($"Error sending HTTP request to {uri}: {result.StatusCode} - {errorContent}");
+                }
+
                 return result;
             }
             catch (Exception ex)
             {
-                // Log the error ou handle como necessário
                 _logger.LogError($"Error sending POST request to {uri}: {ex.Message}");
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
@@ -138,16 +156,9 @@ namespace APIOpenWeather.Services
                 }
                 else
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                    {
-                        string errorMessage = "Unauthorized";
-                        _logger.LogWarning(errorMessage);
-                        return (default, errorMessage);
-                    }
-
-                    string generalErrorMessage = $"Request error: {response.ReasonPhrase}";
-                    _logger.LogError(generalErrorMessage);
-                    return (default, generalErrorMessage);
+                    string errorMessage = $"Request failed: {response.ReasonPhrase}";
+                    _logger.LogError(errorMessage);
+                    return (default, errorMessage);
                 }
             }
             catch (HttpRequestException ex)
@@ -176,6 +187,10 @@ namespace APIOpenWeather.Services
             if (!string.IsNullOrEmpty(token))
             {
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+            else
+            {
+                _logger.LogWarning("No access token found.");
             }
         }
 

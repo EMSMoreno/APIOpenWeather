@@ -80,11 +80,6 @@ public partial class ProfilePage : ContentPage
         }
     }
 
-    private void Faq_Tapped(object sender, EventArgs e)
-    {
-        //Navigation.PushAsync(new FaqPage());
-    }
-
     private void BtnLogout_Clicked(object sender, EventArgs e)
     {
         Preferences.Set("accesstoken", string.Empty);

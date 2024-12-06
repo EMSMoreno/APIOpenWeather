@@ -39,7 +39,7 @@ public partial class LoginPage : ContentPage
         }
         else
         {
-            await DisplayAlert("Error", "Something went wrong", "Cancel");
+            await DisplayAlert("Error", $"Something went wrong: {response.ErrorMessage}", "Cancel");
         }
     }
 
