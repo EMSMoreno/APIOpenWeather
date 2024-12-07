@@ -20,19 +20,21 @@ namespace APIOpenWeather
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
+            // Configure HttpClient for RestService
+            builder.Services.AddHttpClient<IRestService, RestService>(client =>
+            {
+                client.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            });
+
+            // Configure HttpClient for ApiService
             builder.Services.AddHttpClient<ApiService>(client =>
             {
                 client.BaseAddress = new Uri("https://fj507lsz-44324.uks1.devtunnels.ms/");
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             });
 
-            builder.Services.AddHttpClient<IRestService, RestService>(client =>
-            {
-                client.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/weather/");
-            });
-
-            builder.Services.AddSingleton<IRestService, RestService>();
-            builder.Services.AddSingleton<ApiService>();
+            // Register services and pages
             builder.Services.AddSingleton<IValidator, Validator>();
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddSingleton<MainPage>();

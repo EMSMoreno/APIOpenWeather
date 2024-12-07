@@ -14,7 +14,7 @@ public partial class LoginPage : ContentPage
 		InitializeComponent();
         _apiService = apiService;
         _validator = validator;
-        _restService = restService;
+        _restService = restService ?? throw new ArgumentNullException(nameof(restService));
     }
 
     private async void BtnSignIn_Clicked(object sender, EventArgs e)

@@ -19,9 +19,10 @@ namespace APIOpenWeather
             _validator = validator ?? throw new ArgumentNullException(nameof(validator));
 
 
-            Routing.RegisterRoute("ProfilePage", typeof(ProfilePage));
-            Routing.RegisterRoute("AboutPage", typeof(AboutPage));
-            Routing.RegisterRoute("FaqPage", typeof(FaqPage));
+            //Routing.RegisterRoute("ProfilePage", typeof(ProfilePage));
+            //Routing.RegisterRoute("AboutPage", typeof(AboutPage));
+            //Routing.RegisterRoute("AboutApi", typeof(AboutApi));
+            //Routing.RegisterRoute("FaqPage", typeof(FaqPage));
         }
 
         private async void OnProfileClicked(object sender, EventArgs e)
@@ -32,6 +33,11 @@ namespace APIOpenWeather
         private async void OnAboutClicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//AboutPage");
+        }
+
+        private async void AboutApiClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//AboutApi");
         }
 
         private async void OnFaqClicked(object sender, EventArgs e)

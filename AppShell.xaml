@@ -16,13 +16,18 @@
 
         <ShellContent
             Title="Profile"
-            Icon="profile.png"
+            Icon="user1.png"
             ContentTemplate="{DataTemplate pages:ProfilePage}" />
 
         <ShellContent
             Title="About App"
             Icon="about.png"
             ContentTemplate="{DataTemplate pages:AboutPage}" />
+
+        <ShellContent
+            Title="About API"
+            Icon="api.jpg"
+            ContentTemplate="{DataTemplate pages:AboutPage}" />    
 
         <ShellContent
             Title="FAQ"

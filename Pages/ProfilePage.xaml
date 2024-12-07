@@ -6,45 +6,84 @@
 
     <Grid RowDefinitions="Auto,5*,1*" RowSpacing="0">
 
+        <!-- Header with Profile Image -->
         <VerticalStackLayout Grid.Row="0"
-                         BackgroundColor="LightGray"
-                         VerticalOptions="Start"
-                         Spacing="1"
-                         Padding="20">
+                             BackgroundColor="LightGray"
+                             VerticalOptions="Start"
+                             Spacing="1"
+                             Padding="20">
 
             <ImageButton Source="user1.png"
-                     HeightRequest="120"
-                     WidthRequest="110"
-                     Aspect="AspectFill"
-                     CornerRadius="30"
-                     HorizontalOptions="Center" 
-                     x:Name="BtnProfileImg"
-                     Clicked="BtnProfileImg_Clicked"/>
+                         HeightRequest="120"
+                         WidthRequest="110"
+                         Aspect="AspectFill"
+                         CornerRadius="30"
+                         HorizontalOptions="Center"
+                         x:Name="BtnProfileImg"
+                         Clicked="BtnProfileImg_Clicked"/>
 
             <Label x:Name="LblUserName"
-               HorizontalOptions="Center"
-               TextColor="Black" />
-
+                   HorizontalOptions="Center"
+                   Text="Eduardo M."
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="Black" />
         </VerticalStackLayout>
 
-
+        <!-- Profile Information -->
         <VerticalStackLayout Grid.Row="1"
-                         Margin="20"
-                         Spacing="20">
+                             Margin="20"
+                             Spacing="20">
 
             <Border HeightRequest="1" BackgroundColor="Gray" />
 
+            <!-- Personal Info -->
+            <Label Text="Name: Eduardo M."
+                   FontSize="18"
+                   TextColor="Black" />
+            <Label Text="Course: CET - Technological Specialization Course"
+                   FontSize="18"
+                   TextColor="Black" />
+            <Label Text="Educational Institution: CINEL"
+                   FontSize="18"
+                   TextColor="Black" />
+
+            <!-- LinkedIn Link with Gesture Recognizer -->
+            <Label x:Name="LblLinkedIn"
+                   Text="LinkedIn: Eduardo M."
+                   FontSize="18"
+                   TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding OpenLinkedInCommand}"
+                        CommandParameter="https://www.linkedin.com/in/eduardo-moreno-1bb8b71b3/" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <!-- GitHub Link with Gesture Recognizer -->
+            <Label x:Name="LblGitHub"
+                   Text="GitHub: EMSMoreno"
+                   FontSize="18"
+                   TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding OpenGitHubCommand}"
+                        CommandParameter="https://github.com/EMSMoreno/" />
+                </Label.GestureRecognizers>
+            </Label>
+
         </VerticalStackLayout>
 
+        <!-- Logout Button -->
         <ImageButton Grid.Row="2"
-            Source="logout.png"
-            HeightRequest="60"
-            WidthRequest="60"
-            Padding="5"
-            ToolTipProperties.Text="Logout"
-            HorizontalOptions="Center"
-            BackgroundColor="Transparent"
-            x:Name="BtnLogout"
-            Clicked="BtnLogout_Clicked"/>
+                     Source="logout.png"
+                     HeightRequest="60"
+                     WidthRequest="60"
+                     Padding="5"
+                     ToolTipProperties.Text="Logout"
+                     HorizontalOptions="Center"
+                     BackgroundColor="Transparent"
+                     x:Name="BtnLogout"
+                     Clicked="BtnLogout_Clicked"/>
     </Grid>
 </ContentPage>

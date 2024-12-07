@@ -143,7 +143,6 @@
             <Button Text="Profile" Clicked="OnProfileClicked" HorizontalOptions="FillAndExpand" />
         </StackLayout>
 
-
     </Grid>
 
 </ContentPage>

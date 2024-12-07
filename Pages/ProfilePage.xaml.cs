@@ -14,6 +14,32 @@ public partial class ProfilePage : ContentPage
         LblUserName.Text = Preferences.Get("username", string.Empty);
         _apiService = apiService;
         _validator = validator;
+
+        // LinkedIn Gesture
+        var linkedInTap = new TapGestureRecognizer
+        {
+            Command = new Command(() => OpenUrl("https://www.linkedin.com/in/eduardo-moreno-1bb8b71b3/"))
+        };
+        LblLinkedIn.GestureRecognizers.Add(linkedInTap);
+
+        // GitHub Gesture
+        var gitHubTap = new TapGestureRecognizer
+        {
+            Command = new Command(() => OpenUrl("https://github.com/EMSMoreno/"))
+        };
+        LblGitHub.GestureRecognizers.Add(gitHubTap);
+    }
+
+    private void OpenUrl(string url)
+    {
+        try
+        {
+            Browser.OpenAsync(url, BrowserLaunchMode.SystemPreferred);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to open URL: {ex.Message}");
+        }
     }
 
     protected override async void OnAppearing()
@@ -88,4 +114,6 @@ public partial class ProfilePage : ContentPage
 
         Application.Current!.MainPage = new NavigationPage(new LoginPage(_apiService, _validator, restService));
     }
+
+
 }

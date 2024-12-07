@@ -65,7 +65,6 @@ namespace APIOpenWeather.Services
             }
         }
 
-        //Alterar Login
         public async Task<ApiResponse<bool>> Login(string email, string password)
         {
             try
@@ -108,20 +107,15 @@ namespace APIOpenWeather.Services
 
         private async Task<HttpResponseMessage> PostRequest(string uri, HttpContent content)
         {
+            var enderecoUrl = _baseUrl + uri;
             try
             {
-                var result = await _httpClient.PostAsync(uri, content);
-
-                if (!result.IsSuccessStatusCode)
-                {
-                    var errorContent = await result.Content.ReadAsStringAsync();
-                    _logger.LogError($"Error sending HTTP request to {uri}: {result.StatusCode} - {errorContent}");
-                }
-
+                var result = await _httpClient.PostAsync(enderecoUrl, content);
                 return result;
             }
             catch (Exception ex)
             {
+                // Log the error or handle as necessary
                 _logger.LogError($"Error sending POST request to {uri}: {ex.Message}");
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
