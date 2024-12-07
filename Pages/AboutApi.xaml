@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APIOpenWeather.Pages.AboutApi"
+             Title="AboutApi">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="20">
+
+            <!-- Image or Logo -->
+            <Image Source="Resources/Images/openweatherlogo.png"
+                   HeightRequest="150"
+                   HorizontalOptions="Center" />
+
+            <!-- App Title -->
+            <Label Text="About OpenWeather API"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="DarkBlue" />
+
+            <!-- App Description -->
+            <Label Text="This app uses the OpenWeather API to provide real-time weather data for cities and countries around the world. By integrating with OpenWeather, our app delivers accurate and up-to-date information, including temperature, humidity, wind speed, and more, helping users plan their day with confidence."
+                   FontSize="Medium"
+                   TextColor="Black"
+                   LineBreakMode="WordWrap" />
+
+            <!-- Features Section -->
+            <Label Text="Features:"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   TextColor="DarkBlue" />
+
+            <VerticalStackLayout Spacing="10">
+                <Label Text="• Get real-time weather updates for any city or location."
+                       FontSize="Small"
+                       TextColor="Black" />
+                <Label Text="• View detailed forecasts, including temperature, wind speed, and humidity."
+                       FontSize="Small"
+                       TextColor="Black" />
+                <Label Text="• Change locations or use your current GPS location for instant updates."
+                       FontSize="Small"
+                       TextColor="Black" />
+                <Label Text="• Plan ahead with hourly and daily forecasts powered by OpenWeather."
+                       FontSize="Small"
+                       TextColor="Black" />
+            </VerticalStackLayout>
+
+            <!-- About OpenWeather API -->
+            <Label Text="What is OpenWeather API?"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   TextColor="DarkBlue" />
+
+            <Label Text="OpenWeather is a leading weather data provider that offers current weather, historical weather, and forecast data. Its API is used by developers worldwide to integrate weather functionality into applications."
+                   FontSize="Small"
+                   TextColor="Black"
+                   LineBreakMode="WordWrap" />
+
+            <!-- Contact Information -->
+            <Label Text="Contact Information:"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   TextColor="DarkBlue" />
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="• Email: support@weatherapp.com"
+                       FontSize="Small"
+                       TextColor="Black" />
+                <Label Text="• Website: https://openweathermap.org"
+                       FontSize="Small"
+                       TextColor="Black" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

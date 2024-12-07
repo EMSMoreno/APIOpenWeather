@@ -79,38 +79,25 @@ namespace APIOpenWeather.Services
                 var json = JsonSerializer.Serialize(login, _serializerOptions);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                // Log the request payload
-                _logger.LogInformation($"Sending login request: {json}");
-
                 var response = await PostRequest("api/Users/Login", content);
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    var errorContent = await response.Content.ReadAsStringAsync();
-                    _logger.LogError($"Error sending HTTP request: {response.StatusCode} - {errorContent}");
-
+                    _logger.LogError($"Error sending HTTP request: {response.StatusCode}");
                     return new ApiResponse<bool>
                     {
-                        ErrorMessage = $"Error sending HTTP request: {response.StatusCode} - {errorContent}"
+                        ErrorMessage = $"Error sending HTTP request: {response.StatusCode}"
                     };
                 }
 
                 var jsonResult = await response.Content.ReadAsStringAsync();
                 var result = JsonSerializer.Deserialize<Token>(jsonResult, _serializerOptions);
 
-                if (result != null)
-                {
-                    // Store the token and user information in Preferences
-                    Preferences.Set("accesstoken", result.AccessToken);
-                    Preferences.Set("userid", result.UserId);
-                    Preferences.Set("username", result.UserName);
+                Preferences.Set("accesstoken", result!.AccessToken);
+                Preferences.Set("userid", (int)result.UserId!);
+                Preferences.Set("username", result.UserName);
 
-                    return new ApiResponse<bool> { Data = true };
-                }
-                else
-                {
-                    return new ApiResponse<bool> { ErrorMessage = "Failed to deserialize the response" };
-                }
+                return new ApiResponse<bool> { Data = true };
             }
             catch (Exception ex)
             {

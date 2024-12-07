@@ -1,4 +1,5 @@
 ﻿using APIOpenWeather.Models;
+using APIOpenWeather.Pages;
 using APIOpenWeather.Services;
 using APIOpenWeather.Validators;
 using Newtonsoft.Json;
@@ -56,6 +57,30 @@ namespace APIOpenWeather
 
             Debug.WriteLine($"Request URL: {requestUri}");
             return requestUri;
+        }
+
+        // Handle the Profile button click
+        private async void OnProfileClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage(_apiService, _validator));
+        }
+
+        // Handle the About Me button click
+        private async void OnAboutClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AboutPage());
+        }
+
+        // Handle the About API button click
+        private async void OnAboutAPIClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AboutApi());
+        }
+
+        // Handle the FAQ button click
+        private async void OnFaqClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FaqPage());
         }
 
     }

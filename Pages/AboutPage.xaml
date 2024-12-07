@@ -4,47 +4,70 @@
              x:Class="APIOpenWeather.Pages.AboutPage"
              Title="AboutPage">
 
-    <Grid RowDefinitions="Auto,5*,1*" RowSpacing="0">
+    <ScrollView>
 
-        <VerticalStackLayout Grid.Row="0"
-                         BackgroundColor="Cyan"
-                         VerticalOptions="Start"
-                         Spacing="1"
-                         Padding="20">
+        <VerticalStackLayout Padding="15" Spacing="20">
+            <Label Text="About OpenWeather App"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   TextColor="Blue"
+                   HorizontalOptions="Center" />
 
-            <ImageButton Source="user1.png"
-                     HeightRequest="120"
-                     WidthRequest="110"
-                     Aspect="AspectFill"
-                     CornerRadius="30"
-                     HorizontalOptions="Center" 
-                     x:Name="BtnProfileImg"
-                     Clicked="BtnProfileImg_Clicked"/>
+            <Label Text="The OpenWeather App is designed to provide you with accurate and up-to-date weather information for your location and other cities around the globe."
+                   FontSize="Medium"
+                   TextColor="Black" />
 
-            <Label x:Name="LblUserName"
-               HorizontalOptions="Center"
-               TextColor="Black" />
+            <Label Text="Powered by the OpenWeather API, this app fetches real-time weather conditions, forecasts, and additional details to enhance your weather-tracking experience."
+                   FontSize="Medium"
+                   TextColor="Black" />
 
+            <Label Text="Features of the App:"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   TextColor="Blue" />
+
+            <StackLayout>
+                <Label Text="• View real-time weather for any city or location."
+                       FontSize="Medium"
+                       TextColor="Black" />
+                <Label Text="• Track weather forecasts for the upcoming days."
+                       FontSize="Medium"
+                       TextColor="Black" />
+                <Label Text="• Explore detailed weather metrics, including temperature, humidity, wind speed, and more."
+                       FontSize="Medium"
+                       TextColor="Black" />
+                <Label Text="• Easy-to-use interface for smooth navigation."
+                       FontSize="Medium"
+                       TextColor="Black" />
+                <Label Text="• Dynamic visual representation for weather conditions."
+                       FontSize="Medium"
+                       TextColor="Black" />
+            </StackLayout>
+
+            <Label Text="About OpenWeather API"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   TextColor="Blue" />
+
+            <Label Text="The OpenWeather API is a powerful tool for accessing current, forecasted, and historical weather data. It is widely used by developers to integrate weather insights into applications, providing global coverage with a high level of accuracy."
+                   FontSize="Medium"
+                   TextColor="Black" />
+
+            <Label Text="App Version: 1.0.9"
+                   FontSize="Medium"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Developed by: EMSMoreno"
+                   FontSize="Medium"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Date: December 2024"
+                   FontSize="Medium"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
         </VerticalStackLayout>
-
-        <VerticalStackLayout Grid.Row="1"
-                         Margin="20"
-                         Spacing="20">
-
-            <Border HeightRequest="1" BackgroundColor="Gray" />
-
-        </VerticalStackLayout>
-
-        <ImageButton Grid.Row="2"
-            Source="logout.png"
-            HeightRequest="60"
-            WidthRequest="60"
-            Padding="5"
-            ToolTipProperties.Text="Logout"
-            HorizontalOptions="Center"
-            BackgroundColor="Transparent"
-            x:Name="BtnLogout"
-            Clicked="BtnLogout_Clicked"/>
-    </Grid>
+    </ScrollView>
     
 </ContentPage>

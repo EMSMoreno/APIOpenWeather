@@ -7,20 +7,20 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="10" Spacing="15">
-            <Label Text="FAQ"
+            <Label Text="APIOpenWeather - FAQ Section"
                FontSize="Medium"
-               TextColor="DarkBlue"
+               TextColor="Blue"
                FontAttributes="Bold"
                HorizontalOptions="Center" />
 
             <toolkit:Expander>
                 <toolkit:Expander.Header>
-                    <Label Text="How can I place an order?"
+                    <Label Text="What is OpenWeather API?"
                        FontSize="15"
                        FontAttributes="Bold" />
                 </toolkit:Expander.Header>
                 <toolkit:Expander.Content>
-                    <Label Text="To place an order, you must browse our snack catalog, select the desired items, add to cart and proceed to checkout to finalize the purchase."
+                    <Label Text="OpenWeather provides weather data such as current weather, forecasts, and historical data. We use it to retrieve weather information for your location and display it in the app."
                        TextColor="Black"
                        FontSize="12" />
                 </toolkit:Expander.Content>
@@ -28,25 +28,25 @@
 
             <toolkit:Expander>
                 <toolkit:Expander.Header>
-                    <Label Text="What payment methods are accepted?"
+                    <Label Text="How accurate is the weather data?"
                        FontSize="15"
                        FontAttributes="Bold" />
                 </toolkit:Expander.Header>
                 <toolkit:Expander.Content>
-                    <Label Text="We accept credit and debit cards, Pix, and cash on delivery."
-                       TextColor="DarkBlue"
+                    <Label Text="The accuracy of the weather data depends on the location and the forecasted time range. OpenWeather uses global weather data and forecasts from reliable sources."
+                       TextColor="Blue"
                        FontSize="12" />
                 </toolkit:Expander.Content>
             </toolkit:Expander>
 
             <toolkit:Expander>
                 <toolkit:Expander.Header>
-                    <Label Text="Can I track the status of my order?"
+                    <Label Text="How often is the weather data updated?"
                        FontSize="15"
                        FontAttributes="Bold" />
                 </toolkit:Expander.Header>
                 <toolkit:Expander.Content>
-                    <Label Text="Yes, you can track your order status through the 'My Orders' section on our app."
+                    <Label Text="The weather data is updated every 10 minutes for current conditions and every hour for forecast data."
                        TextColor="Black"
                        FontSize="12" />
                 </toolkit:Expander.Content>
@@ -54,40 +54,40 @@
 
             <toolkit:Expander>
                 <toolkit:Expander.Header>
-                    <Label Text="How long does it take for my order to be delivered?"
+                    <Label Text="Can I change the location?"
                        FontSize="15"
                        FontAttributes="Bold" />
                 </toolkit:Expander.Header>
                 <toolkit:Expander.Content>
-                    <Label Text="Delivery time may vary depending on your location and current demand. Our orders are usually delivered within 45 minutes."
-                        TextColor="DarkBlue"
-                       FontSize="12" />
+                    <Label Text="Yes, you can change the location by selecting a new city or using the 'Current Location' feature in the app."
+                           TextColor="Blue"
+                           FontSize="12" />
                 </toolkit:Expander.Content>
             </toolkit:Expander>
 
             <toolkit:Expander>
                 <toolkit:Expander.Header>
-                    <Label Text="Can I cancel or change my order?"
+                    <Label Text="What information does the app display?"
                        FontSize="15"
                        FontAttributes="Bold" />
                 </toolkit:Expander.Header>
                 <toolkit:Expander.Content>
-                    <Label Text="You can cancel or change your order within 10 minutes of placing your order. To do this, contact our support via the app."
-                       TextColor="Black"
-                       FontSize="12" />
+                    <Label Text="The app displays weather information such as temperature, humidity, wind speed, air pressure, and cloudiness for the selected location."
+                           TextColor="Black"
+                           FontSize="12" />
                 </toolkit:Expander.Content>
             </toolkit:Expander>
 
             <toolkit:Expander>
                 <toolkit:Expander.Header>
-                    <Label Text="What do I do if I receive an incorrect order?"
+                    <Label Text="Can I see historical weather data?"
                        FontSize="15"
                        FontAttributes="Bold" />
                 </toolkit:Expander.Header>
                 <toolkit:Expander.Content>
-                    <Label Text="If you receive an incorrect order, please contact our support immediately so we can resolve the issue as quickly as possible."
-                       TextColor="DarkBlue"
-                       FontSize="12" />
+                    <Label Text="Currently, the app does not display historical weather data. However, we are planning to implement this feature in future versions."
+                           TextColor="Blue"
+                           FontSize="12" />
                 </toolkit:Expander.Content>
             </toolkit:Expander>
 
@@ -98,11 +98,12 @@
                        FontAttributes="Bold" />
                 </toolkit:Expander.Header>
                 <toolkit:Expander.Content>
-                    <Label Text="You can contact support from Monday to Friday via email 'contact@macsnacks.com' or by phone: (14)9876-0011 from 8:00 am to 6:00 pm."
-                       TextColor="Black"
-                       FontSize="12" />
+                    <Label Text="If you need assistance, you can contact support via email at 'support@weatherapp.com' or through the 'Contact Us' section in the app."
+                           TextColor="Black"
+                           FontSize="12" />
                 </toolkit:Expander.Content>
             </toolkit:Expander>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -13,30 +13,30 @@ namespace APIOpenWeather
         public AppShell(IRestService restService, ApiService apiService, IValidator validator)
         {
             InitializeComponent();
-            var homePage = new MainPage(restService, apiService, validator);
 
+            _restService = restService ?? throw new ArgumentNullException(nameof(restService));
             _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
             _validator = validator ?? throw new ArgumentNullException(nameof(validator));
-            ConfigureShell();
+
+
+            Routing.RegisterRoute("ProfilePage", typeof(ProfilePage));
+            Routing.RegisterRoute("AboutPage", typeof(AboutPage));
+            Routing.RegisterRoute("FaqPage", typeof(FaqPage));
         }
 
-        private void ConfigureShell()
+        private async void OnProfileClicked(object sender, EventArgs e)
         {
-            var homePage = new MainPage(_restService, _apiService, _validator);
-            var profilePage = new ProfilePage(_apiService, _validator);
-            var aboutPage = new AboutPage(_apiService, _validator, _restService);
-            var faqPage = new FaqPage();
-
-            Items.Add(new TabBar
-            {
-                Items =
-        {
-            new ShellContent { Title = "Home", Icon = "home.png", Content = homePage },
-            new ShellContent { Title = "Profile", Icon = "profile.png", Content = profilePage },
-            new ShellContent { Title = "About Me", Icon = "about.png", Content = aboutPage },
-            new ShellContent { Title = "FAQ", Icon = "faq.png", Content = faqPage }
+            await Shell.Current.GoToAsync("//ProfilePage");
         }
-            });
+
+        private async void OnAboutClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//AboutPage");
+        }
+
+        private async void OnFaqClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//FaqPage");
         }
     }
 }

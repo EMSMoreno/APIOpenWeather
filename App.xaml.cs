@@ -26,7 +26,9 @@ namespace APIOpenWeather
 
             if (string.IsNullOrEmpty(accessToken))
             {
-                MainPage = new NavigationPage(new RegisterPage(_apiService, _validator, _restService));
+                //MainPage = new NavigationPage(new RegisterPage(_apiService, _validator, _restService));
+                //return;
+                MainPage = new NavigationPage(new MainPage(_restService, _apiService, _validator));
                 return;
             }
 

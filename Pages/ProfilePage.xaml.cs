@@ -24,7 +24,7 @@ public partial class ProfilePage : ContentPage
 
     private async Task<string?> GetProfileImage()
     {
-        string defaultImage = "default_profile.png"; // Use um caminho local para a imagem padrão.
+        string defaultImage = "user1.png";
 
         var (response, errorMessage) = await _apiService.GetUserProfileImage();
 
