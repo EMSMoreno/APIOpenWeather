@@ -30,6 +30,11 @@ namespace APIOpenWeather
             await Shell.Current.GoToAsync("//ProfilePage");
         }
 
+        private async void OnInfoClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//InfoPage");
+        }
+
         private async void OnAboutClicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//AboutPage");

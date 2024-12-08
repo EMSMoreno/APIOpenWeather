@@ -136,12 +136,13 @@
         </StackLayout>
 
         <!-- Footer Buttons -->
-        <StackLayout Grid.Row="5" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="White" Padding="10">
+        
+        <!--<StackLayout Grid.Row="5" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="White" Padding="10">
             <Button Text="FAQ" Clicked="OnFaqClicked" HorizontalOptions="FillAndExpand" />
             <Button Text="About App" Clicked="OnAboutClicked" HorizontalOptions="FillAndExpand" />
             <Button Text="About API" Clicked="OnAboutAPIClicked" HorizontalOptions="FillAndExpand" />
             <Button Text="Profile" Clicked="OnProfileClicked" HorizontalOptions="FillAndExpand" />
-        </StackLayout>
+        </StackLayout>-->
 
     </Grid>
 

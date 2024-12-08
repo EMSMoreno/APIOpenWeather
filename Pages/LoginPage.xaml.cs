@@ -14,7 +14,7 @@ public partial class LoginPage : ContentPage
 		InitializeComponent();
         _apiService = apiService;
         _validator = validator;
-        _restService = restService ?? throw new ArgumentNullException(nameof(restService));
+        _restService = restService;
     }
 
     private async void BtnSignIn_Clicked(object sender, EventArgs e)
@@ -35,10 +35,12 @@ public partial class LoginPage : ContentPage
 
         if (!response.HasError)
         {
-            Application.Current!.MainPage = new AppShell(_restService, _apiService, _validator);
+            // Successful login
+            Application.Current.MainPage = new AppShell(_restService, _apiService, _validator);
         }
         else
         {
+            // Display error
             await DisplayAlert("Error", $"Something went wrong: {response.ErrorMessage}", "Cancel");
         }
     }

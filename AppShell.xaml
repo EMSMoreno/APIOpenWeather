@@ -15,9 +15,9 @@
             ContentTemplate="{DataTemplate local:MainPage}" />
 
         <ShellContent
-            Title="Profile"
-            Icon="user1.png"
-            ContentTemplate="{DataTemplate pages:ProfilePage}" />
+            Title="Countries Info"
+            Icon="world.png"
+            ContentTemplate="{DataTemplate pages:InfoPage}" />
 
         <ShellContent
             Title="About App"
@@ -27,12 +27,17 @@
         <ShellContent
             Title="About API"
             Icon="api.jpg"
-            ContentTemplate="{DataTemplate pages:AboutPage}" />    
+            ContentTemplate="{DataTemplate pages:AboutApi}" />    
 
         <ShellContent
             Title="FAQ"
             Icon="faq.png"
             ContentTemplate="{DataTemplate pages:FaqPage}" />
+
+        <ShellContent
+            Title="Profile"
+            Icon="user1.png"
+            ContentTemplate="{DataTemplate pages:ProfilePage}" />
     </TabBar>
 
 </Shell>

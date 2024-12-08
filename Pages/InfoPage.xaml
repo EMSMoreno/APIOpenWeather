@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
+             x:Class="APIOpenWeather.Pages.InfoPage"
+             Title="Temperature Trends by Continent">
+
+    <ScrollView>
+        <StackLayout Padding="20">
+
+            <!-- Title -->
+            <Label Text="Temperature Trends by Continent"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20" />
+
+            <!-- Region Selection -->
+            <Label Text="Select a Continent"
+                   FontSize="Medium"
+                   HorizontalOptions="Center" />
+
+            <Picker x:Name="ContinentPicker" SelectedIndexChanged="OnContinentPickerChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Europe</x:String>
+                        <x:String>Africa</x:String>
+                        <x:String>Asia</x:String>
+                        <x:String>Oceania</x:String>
+                        <x:String>Americas</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Information for the selected continent -->
+            <Label x:Name="ContinentInfoLabel"
+                   Text="Select a continent to see temperature trends and climate information."
+                   FontSize="Medium"
+                   Padding="20"
+                   LineBreakMode="WordWrap"
+                   HorizontalOptions="StartAndExpand" />
+
+            <!-- GIF Image -->
+            <Image x:Name="WorldGif" 
+                   Source="worldgif.gif"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0,20,0,0" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
